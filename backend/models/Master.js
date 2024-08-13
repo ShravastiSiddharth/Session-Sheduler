@@ -19,7 +19,8 @@ const MentorSchema = new mongoose.Schema({
         date:{type:Date},
         startTime:{type:Date},
         endTime:{type:Date},
-        avDuration:{type:Number}
+        avDuration:{type:Number},
+        bookingEnd:{type:Date,default:null}
     }]
 },
 {timestamps:true});

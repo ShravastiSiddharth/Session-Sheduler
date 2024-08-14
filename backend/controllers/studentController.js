@@ -107,7 +107,7 @@ const bookSlot = async (req, res) => {
             student_id: req.user._id,
             date: new Date(date),
             timeSlot: [{
-                startTime,
+                startTime: startTime,
                 endTime: endTimeDate
             }],
             duration,

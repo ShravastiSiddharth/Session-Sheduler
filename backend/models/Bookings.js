@@ -16,7 +16,7 @@ const BookingSchema = new mongoose.Schema({
         require:true,
     },
     timeSlot:[{
-        starTime:{type:Date,require:true},
+        startTime:{type:Date,require:true},
         endTime:{type:Date,require:true}
     }],
     duration:{

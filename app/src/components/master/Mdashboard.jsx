@@ -1,7 +1,9 @@
-import {React, useEffect} from 'react'
+import { React, useEffect } from 'react'
 import Sidebar from './Sidebar'
 import { useAuth } from '../../authentication/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import styles from '../../styles/Dashboard.module.css'
+import Bookings from './Bookings'
 
 
 
@@ -9,21 +11,32 @@ import { useNavigate } from 'react-router-dom'
 
 const Mdashboard = () => {
 
-    const { isAuthenticated, user } = useAuth();
-    const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-            navigate('/');
-        } else {
-           
-        }
-    }, [isAuthenticated, navigate]);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/');
+    } else {
+
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <>
-    <h1>Master</h1>
-    <Sidebar/>
+
+      <div className={styles.dashboard}>
+        <div>
+          <Sidebar />
+        </div>
+        <div>
+          <h1>Welcome, Master!</h1>
+          <div>
+            <Bookings/>
+          </div>
+
+        </div>
+      </div>
     </>
   )
 }

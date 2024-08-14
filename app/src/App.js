@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RoleBasedRoute from './authentication/RoleBasedRoute';
 import Mdashboard from './components/master/Mdashboard';
 import Sdashboard from './components/student/Sdashboard';
+import AddSlot from './components/master/AddSlot';
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
 
           <Route path='/mentor' element={<RoleBasedRoute allowedRoles={[1]}> 
             <Mdashboard/>
+          </RoleBasedRoute>}/>
+          <Route path='/addslot' element={<RoleBasedRoute allowedRoles={[1]}>
+            <AddSlot/>
           </RoleBasedRoute>}/>
 
           <Route path='/dashboard' element={<RoleBasedRoute allowedRoles={[2]}>

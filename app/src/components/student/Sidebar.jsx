@@ -30,8 +30,8 @@ const Sidebar = () => {
                     </li>
                     <li>
                     <FontAwesomeIcon icon={faChessBoard} style={{color: "#7d7d7d",}}/>
-                        <Link to="#"  >
-                          <p>  Boards</p>
+                        <Link to="/slot"  >
+                          <p>Book Session</p>
                         </Link>
                     </li>
                     <li>

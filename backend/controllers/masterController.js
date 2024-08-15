@@ -63,5 +63,39 @@ const getBooking = async (req, res) => {
     }
 };
 
+const rejectBooking = async (req,res) =>{
+    const {bookId} = req.body;
 
-module.exports = {addTime, getBooking};
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+    if (req.user.roleType != 1) return res.status(401).json({ msg: 'Not Valid User' });
+
+    const mentor_id = req.user.id;
+
+    try{
+
+        const booking = await Booking.findById(bookId);
+
+        if(!booking){
+            return res.status(404).json({ msg: 'No bookings found ' });
+        }
+
+        if (booking.mentor_id.toString() !== mentor_id) {
+            return res.status(403).json({ msg: 'Not authorized to reject this booking' });
+        }
+
+       
+        booking.rejected = true;
+        await booking.save();
+
+        res.status(200).json({ msg: 'Booking rejected successfully' });
+
+
+    }
+    catch (err) {
+        console.error(err.message);
+        return res.status(500).send('Server error');
+    }
+
+}
+module.exports = {addTime, getBooking, rejectBooking};

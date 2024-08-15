@@ -1,0 +1,122 @@
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../authentication/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import styles from '../../styles/SearchTime.module.css';
+import Sidebar from './Sidebar';
+
+const SearchTime = () => {
+    const { isAuthenticated, user } = useAuth();
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        date: '',
+        duration: 30,
+    });
+
+    const [availableMentors, setAvailableMentors] = useState([]);
+    const [selectedSlot, setSelectedSlot] = useState(null);
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated, navigate]);
+
+    const handleInputChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:5000/api/student/search', formData);
+            setAvailableMentors(response.data.mentors);
+        } catch (error) {
+            Swal.fire('Error', error.response?.data?.msg || 'An error occurred. Please try again.', 'error');
+        }
+    };
+
+    const handleBook = async (mentorId, startTime, duration) => {
+        const endTime = new Date(startTime.getTime() + duration * 60000);
+        const bookingData = {
+            mentor_id: mentorId,
+            date: formData.date,
+            endTime: endTime.toISOString(),
+            duration,
+            preffered: false
+        };
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/student/book', bookingData);
+            Swal.fire('Success', 'Slot booked successfully', 'success');
+        } catch (error) {
+            Swal.fire('Error', error.response?.data?.msg || 'An error occurred. Please try again.', 'error');
+        }
+    };
+
+    return (
+        <>
+            <div className={styles.dashboard}>
+                <div><Sidebar/></div>
+                <div>
+                    <h2>Search for Available Mentors</h2>
+                    <form onSubmit={handleSearch}>
+                        <div>
+                            <label htmlFor="date">Date:</label>
+                            <input
+                                type="date"
+                                name="date"
+                                value={formData.date}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="duration">Duration (minutes):</label>
+                            <select
+                                name="duration"
+                                value={formData.duration}
+                                onChange={handleInputChange}
+                            >
+                                <option value={30}>30</option>
+                                <option value={45}>45</option>
+                                <option value={60}>60</option>
+                            </select>
+                        </div>
+                        <button type="submit">Search</button>
+                    </form>
+
+                    {availableMentors.length > 0 && (
+                        <div>
+                            <h3>Available Mentors</h3>
+                            {availableMentors.map((mentor) => (
+                                <div key={mentor.mentor}>
+                                    <h4>Mentor ID: {mentor.mentor}</h4>
+                                    {mentor.availableTimes.map((slot) => {
+                                        const slotStartTime = slot.bookingEnd ? new Date(slot.bookingEnd) : new Date(slot.startTime);
+                                        const slotEndTime = new Date(slotStartTime.getTime() + formData.duration * 60000);
+
+                                        return (
+                                            <div key={slot._id}>
+                                                <p>
+                                                    Start Time: {slotStartTime.toLocaleTimeString()} | End Time: {slotEndTime.toLocaleTimeString()}
+                                                </p>
+                                                <button onClick={() => handleBook(mentor.mentor, slotStartTime, formData.duration)}>
+                                                    Book Slot
+                                                </button>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default SearchTime;

@@ -45,7 +45,9 @@ const searchTimeSlot = async (req, res) => {
 
                 if (availableTimes.length > 0) {
                     results.push({
-                        mentor: mentorId,
+                        mentor: {
+                        id:mentorId,
+                        name: mentor.name},
                         availableTimes
                     });
                 }
@@ -129,4 +131,35 @@ const bookSlot = async (req, res) => {
 
 };
 
-module.exports = { searchTimeSlot, bookSlot }
+
+const getBooking = async (req, res) => {
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+    if (req.user.roleType != 2) return res.status(401).json({ msg: 'Not Valid User' });
+
+    const student_id = req.user.id;
+
+    try {
+      
+        const bookings = await Booking.find({ student_id: student_id})
+            .populate('mentor_id', 'name') 
+            .populate('student_id', 'name');
+
+        if (bookings.length === 0) {
+            return res.status(404).json({ msg: 'No bookings found for this mentor' });
+        }
+
+       
+        const formattedBookings = bookings.map(booking => ({
+            ...booking.toObject(),
+            studentName: booking.student_id.name, 
+            mentorName: booking.mentor_id.name 
+        }));
+
+        res.json(formattedBookings);
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).send('Server error');
+    }
+};
+module.exports = { searchTimeSlot, bookSlot, getBooking }

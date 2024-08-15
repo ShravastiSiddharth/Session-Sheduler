@@ -8,6 +8,8 @@ import RoleBasedRoute from './authentication/RoleBasedRoute';
 import Mdashboard from './components/master/Mdashboard';
 import Sdashboard from './components/student/Sdashboard';
 import AddSlot from './components/master/AddSlot';
+import ShowBookings from './components/student/ShowBookings';
+import SearchTime from './components/student/SearchTime';
 
 
 function App() {
@@ -31,6 +33,9 @@ function App() {
 
           <Route path='/dashboard' element={<RoleBasedRoute allowedRoles={[2]}>
             <Sdashboard/>
+          </RoleBasedRoute>}/>
+          <Route path='/slot' element={<RoleBasedRoute allowedRoles={[2]}>
+            <SearchTime/>
           </RoleBasedRoute>}/>
 
         </Routes>

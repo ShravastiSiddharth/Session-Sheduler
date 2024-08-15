@@ -26,6 +26,10 @@ const BookingSchema = new mongoose.Schema({
     preffered:{
         type:Boolean,
         default:false,
+    },
+    rejected:{
+        type:Boolean,
+        default:false
     }
 },
 {timestamps:true});

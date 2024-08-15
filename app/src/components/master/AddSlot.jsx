@@ -1,7 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth } from '../../authentication/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const AddSlot = () => {
+
+
+
+    const { isAuthenticated, user } = useAuth();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/');
+        } else {
+           // fetchBookings();
+        }
+    }, [isAuthenticated, navigate]);
+
+
+
     const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
@@ -16,10 +33,10 @@ const AddSlot = () => {
             return;
         }
 
-        // Calculate the duration
+       
         const start = new Date(`${date}T${startTime}`);
         const end = new Date(`${date}T${endTime}`);
-        const duration = Math.floor((end - start) / (1000 * 60)); // Duration in minutes
+        const duration = Math.floor((end - start) / (1000 * 60)); 
 
         if (duration <= 0) {
             setError('End time must be after start time.');

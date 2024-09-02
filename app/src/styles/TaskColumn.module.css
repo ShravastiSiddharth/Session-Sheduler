@@ -1,0 +1,33 @@
+.bardiv{
+    display: flex;
+    align-items: center;
+   
+    justify-content: center;
+}
+.bardiv h3{
+    margin-right: 0.2rem;
+}
+
+.taskColumn{
+    border-radius: 9px;
+    height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.taskColumn::-webkit-scrollbar {
+    display: none; 
+}
+
+.taskColumn.todo{
+    background-color: rgb(224 252 224);
+}
+.taskColumn.inprogress{
+    background-color: rgb(229 246 247);;
+}
+.taskColumn.underreview{
+    background-color: rgb(221 221 255);
+}
+.taskColumn.finished{
+    background-color: rgb(255 255 194);
+}

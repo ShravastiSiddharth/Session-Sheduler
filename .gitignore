@@ -12,7 +12,7 @@ npm-debug.log*
 # Build outputs
 dist/
 build/
-styles/
+
 
 # OS-specific files
 .DS_Store

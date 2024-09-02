@@ -1,0 +1,68 @@
+.slotCardDiv{
+    display: grid;
+    grid-row-gap: 1rem;
+    height: 70vh;
+    width: 90%;
+    /* justify-content: space-evenly; */
+    overflow-y: auto;
+    margin: 0;
+    padding: 1rem;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.slotCardDiv::-webkit-scrollbar {
+    display: none; 
+}
+
+
+.slotCard{
+    padding: 2rem;
+    background-color: #f5f8ff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+   
+}
+.startTime{
+    color: #2cc45e;
+    font-weight: 500;
+
+}
+.endTime{
+    font-weight: 500;
+    color: #ea1515;
+}
+
+.heading{
+    padding: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: #b388f1;
+    color: white;
+}
+.cancelledButton{
+    background-color: #ff00008f;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.joinButton{
+    border: none;
+    background-color: #9443ec;
+    color: white;
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+.joinButton:hover{
+    background-color: #762dc5;
+    padding: 0.19rem 0.98rem ;
+}

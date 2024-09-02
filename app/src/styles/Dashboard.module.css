@@ -1,0 +1,10 @@
+.dashboard{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.welcomeDiv{
+    padding: 2rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}

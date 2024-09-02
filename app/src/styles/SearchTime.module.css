@@ -1,0 +1,102 @@
+.dashboard{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.headingDiv{
+    padding: 2rem;
+    font-size: 1.6rem;
+}
+.formBoxDiv{
+    padding: 1rem;
+    box-shadow: 0 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+
+}
+
+.form{
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-row-gap: 1rem;
+    font-size: 1.2rem;
+}
+
+.formInput{
+    margin-left: 1rem;
+    padding: 6px;
+    border: 1px solid #080708;
+    border-radius: 4px;
+    width: 140px;
+}
+
+.form button{
+    width: 15%;
+    padding: 8px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    background-color: #6b47dc;
+    font-size: 1rem;
+}
+.form button:hover{
+    background-color: #573bb4;
+    cursor: pointer;
+}
+.radioInput{
+    width: 20px;
+}
+
+
+.slotDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25rem;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.timeSlotCardDiv{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-column-gap: 3rem ;
+}
+
+.bookbtn{
+    background-color: #8e5ee2;
+    border: none;
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 5px;
+    color: white;
+    width: 5.5rem;
+    cursor: pointer;
+}
+.bookbtn:hover{
+    background-color: #784ec2;
+    font-size: 0.9rem;
+}
+
+.mentorDiv{
+    background-color: #f3f3ff;
+    padding: 1rem 3rem 2rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.bookMentor{
+    background-color: #8e5ee2;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: white;
+   
+    cursor: pointer; 
+}
+
+.bookMentor:hover{
+    background-color: #784ec2;
+    /* font-size: 0.9rem; */
+    padding: 0.48rem;
+}

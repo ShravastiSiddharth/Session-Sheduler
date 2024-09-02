@@ -1,0 +1,224 @@
+.taskCard {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.taskCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.priority {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    color: white;
+    font-weight: bold;
+}
+
+.priority.low {
+    background-color: green;
+}
+
+.priority.medium {
+    background-color: orange;
+}
+
+.priority.urgent {
+    background-color: red;
+}
+
+.description {
+    color: #666;
+    margin: 1rem 0;
+}
+
+.deadline {
+    color: #333;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.deadlineLabel {
+    font-weight: bold;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+
+}
+.extraIcons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.left_side_icons{
+    display: grid;
+    width: 50%;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.viewModal{
+    background-color: #fafeff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 75%;
+    border-radius: 10px;
+    box-shadow: 0px 6px 8px 2px rgba(0, 0, 0, 0.3);
+}
+.editModal{
+    background-color: #e1d0f6;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 75%;
+    text-align: center;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.formGroup label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 1.3rem;
+}
+
+.inputField,
+.textArea,
+.selectField {
+    width: 65%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.inputField:focus,
+.textArea:focus,
+.selectField:focus {
+    border-color: #888;
+}
+
+.textArea {
+    resize: vertical;
+    height: 100px;
+}
+
+.editbtn{
+    
+    bottom: 2rem;
+    width: 20%;
+    padding: 0.3rem;
+    background-color: #6b47dc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.editbtn:hover{
+    background-color: #573bb4;
+}
+.editdiv{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.ReactModal__Overlay .ReactModal__Overlay--after-open{
+    background-color: rgba(5, 5, 5, 0.75);
+}
+
+.viewCrossDiv{
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: #7e7171;
+}
+.viewTitleDiv{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.viewDecDiv{
+    padding: 2rem;
+    color: #655e5e;
+    height: 34vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+ }
+
+
+.viewTimeDiv{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 0.9rem;
+    padding: 1rem;
+    padding-top: 0.3rem;
+}
+.viewbtndiv{
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    border-radius: 4px;
+}
+
+.viewExtraIcons{
+    display: flex;
+}
+
+.viewDelete{
+    background-color: #ff000014;
+    border: 1px solid red;
+    color: #e41919;
+}
+
+.viewEdit{
+    border: 1px solid black;
+}

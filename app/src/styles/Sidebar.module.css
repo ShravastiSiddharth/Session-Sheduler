@@ -1,0 +1,123 @@
+.userInfoCont{ 
+    max-width: 80%;
+}
+.sidebar {
+    width: 19vw;
+    background-color: #fff;
+    border-right: 1px solid #eaeaea;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0;
+}
+
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.userInfo h2 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.userInfo button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    border-radius: 4px;
+}
+
+.userInfo button:hover {
+    background-color: #e0e0e0;
+}
+.sidenav{position: relative; 
+    /* top: 10%;  */
+    left: 8%; 
+    /* transform: translate(-50%, -50%);} */
+}
+
+.sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidenav ul li {
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    
+    margin-left: 1rem;
+}
+
+.sidenav ul li a:hover {
+    color: #0070f3;
+}
+
+.createTask {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #6b47dc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    width: 83%;
+
+}
+
+.createTask a {
+    background-color: #6b47dc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.createTask:hover {
+    background-color: #573bb4;
+}
+.createTask a:hover{
+    background-color: #573bb4;
+}
+.logoutbtn{
+    position: absolute;
+    bottom: 2rem;
+    width: 70%;
+    padding: 0.3rem;
+    background-color: #6b47dc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    
+}
+.logoutbtn:hover{
+    background-color: #573bb4;
+}

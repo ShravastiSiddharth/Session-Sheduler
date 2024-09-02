@@ -4,10 +4,17 @@ import { useAuth } from '../../authentication/AuthContext';
 import styles from '../../styles/Sidebar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faHouse, faChessBoard, faGear, faUserPlus, faChartSimple, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate,useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
     const { user, logout } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleNavigation = (path) => {
+        navigate(path, { state: { from: location.pathname } });
+    };
+
 
     return (
         <div className={styles.sidebar}>
@@ -23,16 +30,15 @@ const Sidebar = () => {
             <nav className={styles.sidenav}>
                 <ul>
                     <li> <FontAwesomeIcon icon={faHouse} style={{color: "#7d7d7d",}} />
-                        <Link to="/dashboard" >
+                        <Link to="/mentor" >
                        
                            <p> Home</p>
                         </Link>
                     </li>
                     <li>
-                    <FontAwesomeIcon icon={faChessBoard} style={{color: "#7d7d7d",}}/>
-                        <Link to="/addslot"  >
-                          <p>  Add Time</p>
-                        </Link>
+                        <FontAwesomeIcon icon={faChessBoard} style={{ color: "#7d7d7d" }} />
+                        <Link to="/addslot"><p>Add Slots</p></Link>
+                        
                     </li>
                     <li>
                     <FontAwesomeIcon icon={faGear} style={{color: "#7d7d7d",}}/>

@@ -43,11 +43,7 @@ const Sdashboard = () => {
             </div>
 
 
-            {/* <div>
-   
-    <SearchTime/>
-    <ShowBookings/>
-    </div> */}
+         
 
         </>
     )

@@ -20,7 +20,7 @@ const Login = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-   // const navigate = useNavigate();
+   
     const validateForm = () => {
         const errors = {};
         if (!formData.email) errors.email = 'Email is required';
@@ -38,7 +38,7 @@ const Login = () => {
 
         try {
 
-            const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+            const response = await axios.post('http://13.126.238.11:5000/api/auth/login', formData);
            const {user, token} =  response.data;
             login(token, user);
             
@@ -60,6 +60,8 @@ const Login = () => {
     };
 
     return (
+        <>
+        <div className={styles.myLoginContainer}>
         <div className={styles.signupCont}>
             <div className={styles.signupForm}>
                 <h1>Welcome to <span >CareerCarve!</span></h1>
@@ -80,8 +82,13 @@ const Login = () => {
                 <br/>
                
                <div>Don't have an account? <Link to="/signup">SignUp</Link></div>
+            
+            
             </div>
         </div>
+        
+            </div>
+        </>
     );
 };
 

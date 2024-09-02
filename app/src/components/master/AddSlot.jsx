@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../authentication/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import styles from '../../styles/SearchTime.module.css';
+import Sidebar from './Sidebar';
+import Swal from 'sweetalert2';
 
 const AddSlot = () => {
 
 
 
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated ,user} = useAuth();
     const navigate = useNavigate();
     useEffect(() => {
         if (!isAuthenticated) {
             navigate('/');
-        } else {
-           // fetchBookings();
-        }
-    }, [isAuthenticated, navigate]);
+        } 
+    }, [isAuthenticated, navigate,user]);
 
+  
 
 
     const [date, setDate] = useState('');
@@ -33,10 +35,10 @@ const AddSlot = () => {
             return;
         }
 
-       
+
         const start = new Date(`${date}T${startTime}`);
         const end = new Date(`${date}T${endTime}`);
-        const duration = Math.floor((end - start) / (1000 * 60)); 
+        const duration = Math.floor((end - start) / (1000 * 60));
 
         if (duration <= 0) {
             setError('End time must be after start time.');
@@ -51,12 +53,13 @@ const AddSlot = () => {
         }];
 
         try {
-            console.log(availableTimes)
-            await axios.post('http://localhost:5000/api/master/add/time', { availableTimes }, {
+           
+            await axios.post('http://13.126.238.11:5000/api/master/add/time', { availableTimes }, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
+            Swal.fire('Success', 'Slot Added successfully', 'success');
             setSuccess('Time slot added successfully!');
             setDate('');
             setStartTime('');
@@ -65,42 +68,57 @@ const AddSlot = () => {
         } catch (error) {
             setError('Error adding time slot.');
             console.error('Error adding time slot:', error);
+            Swal.fire('Error',`${error}`,'error')
         }
     };
 
+    const errorSwal =(error)=>{
+        Swal.fire('Error',`${error}`,'error');
+    }
+
     return (
-        <div className="add-slot-container">
-            <h1>Add Time Slot</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Date:</label>
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                    />
+        <>
+            <div className={styles.dashboard}>
+                <div>
+                    <Sidebar />
                 </div>
-                <div className="form-group">
-                    <label>Start Time:</label>
-                    <input
-                        type="time"
-                        value={startTime}
-                        onChange={(e) => setStartTime(e.target.value)}
-                    />
+                <div style={{ padding: '2rem' }}>
+                    <div className={styles.headingDiv}>Add your available timings</div>
+                    <div className={styles.formBoxDiv}>
+                        <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className="form-group">
+                                <label>Date:</label>
+                                <input
+                                    type="date"
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Start Time:</label>
+                                <input
+                                    type="time"
+                                    value={startTime}
+                                    onChange={(e) => setStartTime(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>End Time:</label>
+                                <input
+                                    type="time"
+                                    value={endTime}
+                                    onChange={(e) => setEndTime(e.target.value)}
+                                />
+                            </div>
+                            <button type="submit">Add Slot</button>
+                        </form>
+                    </div>
+                   
+                    {error && errorSwal(error)}
+                   
                 </div>
-                <div className="form-group">
-                    <label>End Time:</label>
-                    <input
-                        type="time"
-                        value={endTime}
-                        onChange={(e) => setEndTime(e.target.value)}
-                    />
-                </div>
-                <button type="submit">Add Slot</button>
-            </form>
-            {error && <p className="error">{error}</p>}
-            {success && <p className="success">{success}</p>}
-        </div>
+            </div>
+        </>
     );
 };
 

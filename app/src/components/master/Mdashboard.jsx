@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react'
+import { React, useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import { useAuth } from '../../authentication/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -13,14 +13,21 @@ const Mdashboard = () => {
 
   const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/');
-    } else {
-
+        navigate('/');
+    } else if (user) {
+        setLoading(false);
     }
-  }, [isAuthenticated, navigate]);
+}, [isAuthenticated, navigate, user]);
+
+
+if (loading) {
+    return <div>Loading...</div>; 
+}
+
 
   return (
     <>

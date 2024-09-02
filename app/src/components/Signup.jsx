@@ -69,7 +69,7 @@ const SignUp = () => {
         };
         try {
             console.log(dataToSend)
-            const response = await axios.post('http://localhost:5000/api/auth/register',dataToSend);
+            const response = await axios.post('http://13.126.238.11:5000/api/auth/register',dataToSend);
             login(response.data.token);
             await   Swal.fire({
                 //position: "top-end",
@@ -83,7 +83,8 @@ const SignUp = () => {
         }
     };
 
-    return (<>
+    return (
+    <>
         <div className={styles.signupCont}>
             <div className={styles.signupForm}>
                 <h1>Welcome to <span >CareerCarve!</span></h1>
@@ -140,6 +141,11 @@ const SignUp = () => {
                 <div>Already have an account? <Link to='/'>LogIn</Link></div>
             </div>
         </div>
+        <div className={styles.footer}>Note: you can use below accounts for demo as they already have some data
+                <p>Student : std1@gmail.com</p>
+                <p>Mentor: m@gmail.com</p>
+                <p>Password: 123456789</p>
+            </div>
     </>
     );
 };

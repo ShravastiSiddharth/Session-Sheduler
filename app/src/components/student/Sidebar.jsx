@@ -3,7 +3,7 @@ import React from 'react';
 import { useAuth } from '../../authentication/AuthContext';
 import styles from '../../styles/Sidebar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faHouse, faChessBoard, faGear, faUserPlus, faChartSimple, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faHouse, faPlus, faGear, faUserPlus, faChartSimple, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -29,7 +29,7 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li>
-                    <FontAwesomeIcon icon={faChessBoard} style={{color: "#7d7d7d",}}/>
+                    <FontAwesomeIcon icon={faPlus}  style={{color: "#7d7d7d",}}/>
                         <Link to="/slot"  >
                           <p>Book Session</p>
                         </Link>

@@ -26,7 +26,7 @@ const Bookings = () => {
 
     const fetchBookings = async () => {
         try {
-            const response = await axios.get('http://13.126.238.11:5000/api/master/bookings', {
+            const response = await axios.get('https://session-sheduler.onrender.com/api/master/bookings', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -45,7 +45,7 @@ const Bookings = () => {
     const handleDelete = async (bookingId, slotId) => {
         try {
             // Make API call to reject the booking
-            await axios.post('http://localhost:5000/api/master/reject', {
+            await axios.post('https://session-sheduler.onrender.com/api/master/reject', {
                 bookId: bookingId
             }, {
                 headers: {

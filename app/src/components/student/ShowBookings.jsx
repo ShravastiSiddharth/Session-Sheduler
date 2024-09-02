@@ -21,7 +21,7 @@ const ShowBookings = () => {
 
     const fetchBookings = async () => {
         try {
-            const response = await axios.get('http://13.126.238.11:5000/api/student/bookings', {
+            const response = await axios.get('https://session-sheduler.onrender.com/api/student/bookings', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }

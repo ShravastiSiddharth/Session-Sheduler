@@ -54,7 +54,7 @@ const AddSlot = () => {
 
         try {
            
-            await axios.post('http://13.126.238.11:5000/api/master/add/time', { availableTimes }, {
+            await axios.post('https://session-sheduler.onrender.com/api/master/add/time', { availableTimes }, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }

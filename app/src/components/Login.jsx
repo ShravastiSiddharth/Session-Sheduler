@@ -38,7 +38,7 @@ const Login = () => {
 
         try {
 
-            const response = await axios.post('http://13.126.238.11:5000/api/auth/login', formData);
+            const response = await axios.post('https://session-sheduler.onrender.com/api/auth/login', formData);
            const {user, token} =  response.data;
             login(token, user);
             
